@@ -127,6 +127,7 @@ impl Store {
         }
     }
 
+    #[allow(clippy::blocks_in_conditions)]
     pub(crate) fn for_each<F>(&mut self, mut f: F)
     where
         F: FnMut(Ptr),
@@ -136,6 +137,7 @@ impl Store {
             Ok::<_, Infallible>(())
         }) {
             Ok(()) => (),
+            #[allow(unused)]
             Err(infallible) => match infallible {},
         }
     }
